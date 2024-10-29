@@ -14,12 +14,12 @@ return {
         linespace = 0,
       },
       g = { -- configure vim.g variables
-        neovide_cursor_animation_length = 0.05,
-        neovide_cursor_trail_size = 0.1,
+        neovide_cursor_animation_length = 0.02,
+        neovide_cursor_trail_size = 0,
         neovide_hide_mouse_when_typing = true,
         neovide_refresh_rate = 144,
         -- configure scaling
-        neovide_scale_factor = 1.0,
+        neovide_scale_factor = 0.9,
         -- configure padding
         neovide_padding_top = 0,
         neovide_padding_bottom = 0,
