@@ -47,11 +47,6 @@ return {
         " ;ooo:       ;cclooo:.",
         "  .;oc        'coo;.",
         "    .'         .,.",
-        " ",
-        " ",
-        " ",
-        " ",
-        " ",
       }
       return opts
     end,
