@@ -10,6 +10,7 @@ return {
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.colorscheme.nightfox-nvim" },
   { import = "astrocommunity.icon/mini-icons" },
+  { import = "astrocommunity.recipes.neovide" },
   { import = "astrocommunity.bars-and-lines.bufferline-nvim" },
   { import = "astrocommunity.bars-and-lines.lualine-nvim" },
   -- import/override with your plugins folder
