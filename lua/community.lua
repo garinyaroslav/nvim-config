@@ -13,5 +13,6 @@ return {
   { import = "astrocommunity.recipes.neovide" },
   { import = "astrocommunity.bars-and-lines.bufferline-nvim" },
   { import = "astrocommunity.bars-and-lines.lualine-nvim" },
+  { import = "astrocommunity.pack.java" },
   -- import/override with your plugins folder
 }
