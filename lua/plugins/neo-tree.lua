@@ -9,15 +9,15 @@ return {
   },
   opts = {
     window = {
-      position = "current", -- Открывать Neo-tree в текущем окне
+      position = "current",
     },
     filesystem = {
-      follow_current_file = true, -- Следовать за текущим файлом
+      follow_current_file = true,
       filtered_items = {
-        hide_dotfiles = false, -- Показывать скрытые файлы
-        hide_gitignored = false, -- Если нужно также показывать файлы, игнорируемые Git
+        hide_dotfiles = false,
+        hide_gitignored = false,
       },
-      use_libuv_file_watcher = true, -- Обновление содержимого при изменении файлов
+      use_libuv_file_watcher = true,
     },
   },
 }

@@ -36,7 +36,7 @@ return {
         neovide_min_scale_factor = vim.g.neovide_min_scale_factor or 0.5,
         neovide_max_scale_factor = vim.g.neovide_max_scale_factor or 1.0,
         neovide_initial_scale_factor = vim.g.neovide_scale_factor or 0.7,
-        neovide_scale_factor = vim.g.neovide_scale_factor or 0.7,
+        -- neovide_scale_factor = vim.g.neovide_scale_factor or 0.7,
 
         neovide_cursor_animation_length = 0.02,
         neovide_cursor_trail_size = 0,
