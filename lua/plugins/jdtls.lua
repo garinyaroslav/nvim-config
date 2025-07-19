@@ -1,5 +1,6 @@
 return {
   { import = "astrocommunity.pack.xml" },
+  { import = "astrocommunity.pack.java" },
   {
     "nvim-treesitter/nvim-treesitter",
     optional = true,
@@ -39,24 +40,19 @@ return {
       {
         "AstroNvim/astrolsp",
         optional = true,
-        ---@type AstroLSPOpts
         opts = {
-          ---@diagnostic disable: missing-fields
           handlers = { jdtls = false },
         },
       },
     },
     opts = function(_, opts)
       local utils = require "astrocore"
-      -- use this function notation to build some variables
       local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle", ".project" }
       local root_dir = require("jdtls.setup").find_root(root_markers)
-      -- calculate workspace dir
       local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
       local workspace_dir = vim.fn.stdpath "data" .. "/site/java/workspace-root/" .. project_name
       vim.fn.mkdir(workspace_dir, "p")
 
-      -- validate operating system
       if not (vim.fn.has "mac" == 1 or vim.fn.has "unix" == 1 or vim.fn.has "win32" == 1) then
         utils.notify("jdtls: Could not detect valid OS", vim.log.levels.ERROR)
       end
@@ -76,6 +72,7 @@ return {
           "java.base/java.util=ALL-UNNAMED",
           "--add-opens",
           "java.base/java.lang=ALL-UNNAMED",
+          "-parameters",
           "-jar",
           vim.fn.expand "$MASON/share/jdtls/plugins/org.eclipse.equinox.launcher.jar",
           "-configuration",
@@ -87,7 +84,15 @@ return {
         settings = {
           java = {
             eclipse = { downloadSources = true },
-            configuration = { updateBuildConfiguration = "interactive" },
+            configuration = {
+              updateBuildConfiguration = "automatic", -- Merged from java.lua
+              runtimes = {
+                {
+                  name = "JavaSE-21",
+                  path = "/usr/lib/jvm/java-21-openjdk/",
+                },
+              },
+            },
             maven = { downloadSources = true },
             implementationsCodeLens = { enabled = true },
             referencesCodeLens = { enabled = true },
@@ -110,17 +115,36 @@ return {
                 staticStarThreshold = 9999,
               },
             },
+            project = {
+              referencedLibraries = {
+                "build/libs/*.jar",
+                "build/classes/java/main",
+              },
+              build = {
+                gradle = {
+                  enabled = true,
+                  wrapper = { enabled = true },
+                },
+                compilerArgs = { "-parameters" },
+              },
+            },
+            format = {
+              enabled = true,
+              settings = {
+                url = "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
+                profile = "GoogleStyle",
+              },
+            },
           },
         },
         init_options = {
           bundles = {
             vim.fn.expand "$MASON/share/java-debug-adapter/com.microsoft.java.debug.plugin.jar",
-            -- unpack remaining bundles
             (table.unpack or unpack)(vim.split(vim.fn.glob "$MASON/share/java-test/*.jar", "\n", {})),
           },
         },
         handlers = {
-          ["$/progress"] = function() end, -- disable progress updates.
+          ["$/progress"] = function() end,
         },
         filetypes = { "java" },
         on_attach = function(...)
@@ -131,9 +155,8 @@ return {
       }, opts)
     end,
     config = function(_, opts)
-      -- setup autocmd on filetype detect java
       vim.api.nvim_create_autocmd("Filetype", {
-        pattern = "java", -- autocmd to start jdtls
+        pattern = "java",
         callback = function()
           if opts.root_dir and opts.root_dir ~= "" then
             require("jdtls").start_or_attach(opts)
@@ -142,14 +165,10 @@ return {
           end
         end,
       })
-      -- create autocmd to load main class configs on LspAttach.
-      -- This ensures that the LSP is fully attached.
-      -- See https://github.com/mfussenegger/nvim-jdtls#nvim-dap-configuration
       vim.api.nvim_create_autocmd("LspAttach", {
         pattern = "*.java",
         callback = function(args)
           local client = vim.lsp.get_client_by_id(args.data.client_id)
-          -- ensure that only the jdtls client is activated
           if client.name == "jdtls" then require("jdtls.dap").setup_dap_main_class_configs() end
         end,
       })
