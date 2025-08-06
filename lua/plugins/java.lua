@@ -33,6 +33,27 @@ return {
     end,
   },
   {
+    "mfussenegger/nvim-dap",
+    dependencies = {
+      { "rcarriga/nvim-dap-ui", config = true }, -- UI для отладки
+      { "theHamsta/nvim-dap-virtual-text", config = true }, -- Виртуальный текст для переменных
+    },
+    config = function()
+      local dap = require "dap"
+
+      dap.configurations.java = {
+        {
+          type = "java",
+          request = "attach",
+          name = "Debug (Attach) - Remote",
+          hostName = "localhost",
+          port = 5005,
+        },
+      }
+    end,
+  },
+
+  {
     "mfussenegger/nvim-jdtls",
     ft = { "java" },
     dependencies = {
@@ -85,7 +106,7 @@ return {
           java = {
             eclipse = { downloadSources = true },
             configuration = {
-              updateBuildConfiguration = "automatic", -- Merged from java.lua
+              updateBuildConfiguration = "automatic",
               runtimes = {
                 {
                   name = "JavaSE-21",
@@ -139,7 +160,8 @@ return {
         },
         init_options = {
           bundles = {
-            vim.fn.expand "$MASON/share/java-debug-adapter/com.microsoft.java.debug.plugin.jar",
+            vim.fn.glob(vim.fn.expand "$MASON/share/java-debug-adapter/com.microsoft.java.debug.plugin*.jar", true)
+              or utils.notify("java-debug-adapter JAR not found", vim.log.levels.ERROR),
             (table.unpack or unpack)(vim.split(vim.fn.glob "$MASON/share/java-test/*.jar", "\n", {})),
           },
         },
