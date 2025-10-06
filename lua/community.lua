@@ -6,6 +6,8 @@
 return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
+  { import = "astrocommunity.pack.java" },
+  { import = "astrocommunity.pack.kotlin" },
   { import = "astrocommunity.colorscheme.nightfox-nvim" },
   { import = "astrocommunity.colorscheme.tokyodark-nvim" },
   { import = "astrocommunity.colorscheme.github-nvim-theme" },
@@ -15,7 +17,6 @@ return {
   { import = "astrocommunity.recipes.neovide" },
   { import = "astrocommunity.bars-and-lines.bufferline-nvim" },
   { import = "astrocommunity.bars-and-lines.lualine-nvim" },
-  { import = "astrocommunity.pack.java" },
   { import = "astrocommunity.search.grug-far-nvim" },
   { import = "astrocommunity.diagnostics.trouble-nvim" },
 }
