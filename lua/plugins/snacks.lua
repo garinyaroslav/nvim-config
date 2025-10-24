@@ -20,6 +20,7 @@ return {
     picker = {
       sources = {
         explorer = {
+          replace_netrw = true,
           hidden = true,
           ignored = true,
           jump = { close = true },
