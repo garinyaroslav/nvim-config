@@ -3,7 +3,15 @@ return {
   opts = {
     servers = {
       kotlin_language_server = {
-        mason = false,
+        settings = {
+          kotlin = {
+            compiler = {
+              jvm = {
+                target = "21",
+              },
+            },
+          },
+        },
       },
     },
   },
