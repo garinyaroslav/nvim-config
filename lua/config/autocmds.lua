@@ -3,6 +3,19 @@
 --
 -- Add any additional autocmds here
 -- with `vim.api.nvim_create_autocmd`
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "java", "lua", "python", "go", "rust", "javascript", "typescript" },
+  callback = function()
+    vim.opt_local.spell = true
+    vim.opt_local.spelllang = { "ru", "en" }
+
+    vim.bo.spelloptions = "camel"
+    vim.bo.spellcapcheck = ""
+  end,
+  group = vim.api.nvim_create_augroup("spell_in_code", { clear = true }),
+})
+
 --
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")

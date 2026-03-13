@@ -5,3 +5,6 @@
 vim.opt.shiftwidth = 4 -- Size of an indent
 vim.opt.tabstop = 4 -- Number of spaces tabs count for
 vim.g.lazyvim_check_order = false -- disabled warning about lazy imports
+
+vim.opt.spell = true
+vim.opt.spelllang = { "en", "ru" }
