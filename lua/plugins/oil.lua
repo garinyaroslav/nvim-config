@@ -1,5 +1,5 @@
 return {
-  "stevearc/oil.nvim",
+  -- "stevearc/oil.nvim",
   -- keys = {
   --   { "<leader>e", "<cmd>Oil --float<CR>", desc = "Explorer" },
   -- },
@@ -11,5 +11,5 @@ return {
   --     padding = 5,
   --   },
   -- },
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  -- dependencies = { "nvim-tree/nvim-web-devicons" },
 }
