@@ -109,3 +109,6 @@ Mongo
 mongo
 charset
 varchar
+json
+gitlab
+jira
