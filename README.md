@@ -1,4 +1,13 @@
-# 💤 LazyVim
+# Dotfiles
 
-A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
-Refer to the [documentation](https://lazyvim.github.io/installation) to get started.
+Managed by [chezmoi](https://www.chezmoi.io/).
+
+## Installation
+
+```bash
+# chezmoi installation + dotfiles applying
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply garinyaroslav
+
+# Or if chezmoi already installed:
+chezmoi init --apply https://github.com/garinyaroslav/dotfiles.git
+```
