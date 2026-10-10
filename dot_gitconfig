@@ -1,0 +1,7 @@
+[http]
+	sslVerify = false
+[credential]
+	helper = store
+[user]
+	email = garinyaroslav13@mail.ru
+	name = Garin Yaroslav

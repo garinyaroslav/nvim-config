@@ -1,0 +1,49 @@
+set nocompatible
+
+syntax enable               
+filetype plugin indent on   
+set number                  
+set relativenumber          
+
+set mouse=a                 
+
+set tabstop=4               
+set shiftwidth=4            
+set smarttab                
+
+set autoindent              
+set smartindent             
+
+set ignorecase              
+set smartcase               
+set incsearch               
+set hlsearch                
+
+set hidden                  
+
+set scrolloff=3             
+set sidescrolloff=5         
+
+set wildmenu                
+set wildmode=longest:full,full
+
+set encoding=utf-8
+set fileencoding=utf-8
+
+set showcmd                 
+set ruler                   
+set laststatus=2            
+set showmode                
+
+set clipboard=unnamedplus
+
+let mapleader = " "
+
+nnoremap <leader>w :w<CR>           " <Space>w → сохранить
+nnoremap <leader>q :q<CR>           " <Space>q → выйти
+nnoremap <leader>Q :qa!<CR>         " <Space>Q → выйти из всех без сохранения
+
+nnoremap <leader>n :bnext<CR>
+nnoremap <leader>p :bprevious<CR>
+
+nnoremap <Esc><Esc> :nohlsearch<CR>

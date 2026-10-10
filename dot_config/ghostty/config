@@ -1,0 +1,23 @@
+font-family = FiraCode Nerd Font SemBd
+font-family-bold = FiraCode Nerd Font Bold
+font-family-italic = FiraCode Nerd Font Reg
+font-family-bold-italic = FiraCode Nerd Font Med
+
+font-size = 13
+
+window-padding-x = 0
+window-padding-y = 0
+
+cursor-style = block
+cursor-style-blink = false
+cursor-color = "cell-foreground"
+cursor-text = "cell-background"
+
+shell-integration-features = no-cursor
+
+adjust-cursor-thickness = 0
+adjust-cursor-height = 100%
+
+cursor-opacity = 1.0
+
+confirm-close-surface=false

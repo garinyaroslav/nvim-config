@@ -1,0 +1,62 @@
+/* Catppuccin Mocha — matching waybar theme */
+
+* {
+    font-family: JetBrainsMono, monospace;
+    font-size: 16px;
+    color: #cdd6f4;
+    background: transparent;
+}
+
+#window {
+    background: #11111b;        /* @crust = @main-bg */
+    margin: auto;
+    padding: 6px;
+    border-radius: 4px;
+    border: 2px solid #a6adc8; /* @subtext0 = @main-br */
+}
+
+#input {
+    padding: 10px 14px;
+    margin: 6px 6px 4px 6px;
+    border-radius: 4px;
+    background: #181825;        /* @mantle */
+    border: 1px solid #45475a; /* @surface1 */
+    color: #cdd6f4;
+    caret-color: #b4befe;
+}
+
+#input:focus {
+    border-color: #b4befe;     /* @accent = @lavender */
+}
+
+#outer-box {
+    padding: 4px;
+}
+
+#scroll {
+    margin: 4px 6px 6px 6px;
+}
+
+#img {
+    margin-right: 8px;
+}
+
+#entry {
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin: 2px 0;
+    background: transparent;
+}
+
+#entry:selected {
+    background: #1e1e2e;       /* @base = @hover-bg */
+}
+
+#entry:selected #text {
+    color: #b4befe;            /* @accent */
+}
+
+#text {
+    margin: 2px 0;
+    color: #cdd6f4;
+}

@@ -1,0 +1,35 @@
+#!/bin/bash
+
+main() {
+    local list=(
+        "⏼ Shutdown"
+        "⟳ Reboot"
+        "⏸ Suspend"
+        "🔒 Lock"
+        "󰍃 Logout"
+        "󰒲 Hibernate"
+    )
+
+    local selected
+    selected=$(printf "%s\n" "${list[@]}" | wofi \
+        --dmenu \
+        --prompt="Power Menu" \
+        --width=500 \
+        --height=240 \
+        --cache-file=/dev/null \
+		--sort-order=default \
+        --no-actions \
+        --insensitive)
+
+    case "$selected" in
+        *Shutdown)  systemctl poweroff ;;
+        *Reboot)    systemctl reboot ;;
+        *Suspend)   systemctl suspend ;;
+        *Lock)      loginctl lock-session ;;
+        *Logout)    loginctl terminate-session "$XDG_SESSION_ID" ;;
+        *Hibernate) systemctl hibernate ;;
+        *)          return 1 ;;
+    esac
+}
+
+main
